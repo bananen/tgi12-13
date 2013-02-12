@@ -1,0 +1,259 @@
+\documentclass[a4paper]{scrreprt}
+
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{TGI Zusammenfassung}
+\author{Fedor Scholz}
+\maketitle
+
+\tableofcontents
+\vspace{1cm}
+
+\chapter{Komplexitaetstheorie}
+
+
+
+\section{Begriffe}
+
+\subsection{Semi-Thue-System}
+Ein Alphabet A und eine Menge von Produktionen P (A, P).
+
+\subsection{Kleene'scher Abschluss}
+$L^* = \{w|w_1w_2...w_n$ $fuer$ $n \in N$ $und$ $w_i \in L$ $oder$ $w = \lambda\}$
+
+\subsection{Grammatik Chomsky Typ 3}
+Alle Produktionen sind der Form $A \rightarrow v$ mit $A \in V$ und $v = \lambda$ oder $v = aB$ mit $a \in T$ und $B \in V$ (sie heißen auch rechtslinear oder regulaer).
+
+\subsection{Rechtsinvariante Relation}
+Eine Relation R heißt rechtsinvariant, wenn $xRy \Rightarrow \forall z \in \Sigma^*: xzRyz$.
+
+\subsection{Nerode-Relation}
+$xR_Ly \Leftrightarrow \forall z \in \Sigma^*: (xz \in L \Leftrightarrow yz \in L)$.
+
+\subsection{Pumping-Lemma fuer regulaere Sprachen}
+Sei A eine regulaere Sprache, dann existiert eine Zahl p, sodass fuer alle $s \in A$ der Laenge $\ge p$ gilt: $s = xyz$ mit
+\begin{itemize}
+	\item $|y| > 0 (y \neq \lambda)$
+	\item $|xy| \le p$
+	\item $\forall i \ge 0: xy^iz \in A$
+\end{itemize}
+
+\subsection{Pumping-Lemma fuer kontextfreie Sprache}
+Sei A eine kontextfreie Sprache, dann existiert eine Zahl p, sodass fuer alle $s \in A$ der Laenge $\ge p$ gilt: $s = uvxyz$ mit
+\begin{itemize}
+	\item $\forall i \ge 0: wv^ixy^iz \in A$
+	\item $|vy| > 0$
+	\item $|vxy| \le p$
+\end{itemize}
+
+\subsection{Chomsky-Normalform}
+Eine Grammatik ist in Chomsky-Normalform, wenn jede Produktion eine der folgenden Formen hat:
+\begin{itemize}
+	\item $A \rightarrow BC$
+	\item $A \rightarrow a$
+	\item $S \rightarrow \lambda$ (falls $\lambda$ in der Sprache)
+\end{itemize}
+
+\subsection{Chomsky Typ 0}
+Grammatiken ohne Einschraenkungen.
+
+\subsection{Chomsky Typ 1}
+Grammatiken mit Produktionen $u \rightarrow v$ mit $u \in V^+$, $v \in ((V \cup T) \textbackslash \{S\})^+$ und $|u| \le |v|$ (oder $S \rightarrow \lambda$) (auch kontextsensitiv).
+
+\subsection{Linear beschraenkte Turingmaschine}
+Nutzt nur den Teil des Bandes, welches von Anfang an beschrieben war. M linear beschraenkt $\Rightarrow$ von M akzeptierte Sprache ist vom Typ Chomsky 1.
+
+\subsection{Universelle Turingmaschine}
+Nimmt \{0,1\}-Codierung einer Turingmaschine M und Eingabe entgegen, simuliert M und akzeptiert genau dann, wenn M akzeptiert.
+
+\subsection{Berechenbare Funktion}
+Eine Funktion f heißt berechenbar $\Leftrightarrow$ Es existiert eine Turingmaschine, die nach endlich vielen Schritten mit dem Ergebnis der Funktion auf dem Band haelt.
+
+\subsection{many-one-Reduzierbarkeit}
+Eine Sprache A heißt many-one-reduzierbar auf die Sprache B ($A \le_m B$), falls eine berechenbare Funktion existiert mit:
+$\forall w \in \Sigma^*: w \in A \Leftrightarrow f(w) \in B$
+B heißt dann schwieriger als A.
+$A \le_m B \Leftrightarrow (B entscheidbar \Rightarrow A entscheidbar)$
+
+\subsection{Turingreduzierbarkeit}
+$A \le_T B$, wenn es eine Orakelturingmaschine $TM^O$ gibt, die A entscheidet, wobei O ein Orakel fuer B ist.
+Turingreduzierbarkeit $\neg$ many-one-Reduzierbarkeit
+
+\subsection{Orakel}
+Fuer eine Sprache B ist ein Orakel fuer B ein externes Geraet, welches fuer eine Turingmaschine entscheidet, ob ein Wort $w \in B$.
+Eine Turingmaschine mit Zugriff auf ein Orakel heißt Orakelturingmaschine $TM^O$.
+
+\subsection{Kolmogorow-Komplexitaet}
+Fuer einen String ist $K(x)$ das kleinste d, sodass eine Turingmaschine mit Eingabe w x ausgibt und obige Codierung d Bits benoetigt.
+$\exists c \forall x: K(x) \le |x| + c$
+$\exists c \forall x: K(xx) \le K(x) + c$
+Fuer jede Beschreibungssprache p existiert eine Konstante c mit $\forall x: K(x) \le K_p(x) + c$
+Fuer jede Laenge n gibt es unkomprimierbare Strings der Laenge n.
+
+\subsection{Speed-Up-Theorem}
+Zu jeder Turingmaschine existiert eine Turingmascine, welche um einen konstanten Faktor schneller ist.
+
+\subsection{Verifizierer}
+Ein Verifizierer fuer eine Sprache A ist ein Algorithmus V mit $A = \{w|$ V akzeptiert $(w,c)$ fuer irgendein c\}
+Ist die Laufzeit von V polynomial in $|w|$, so sagen wir A ist polynomial verfizierbar. Insbesondere ist $|c|$ dann polynomial in $|w|$. c nennt man auch Zeugen oder Beweis.
+
+\subsection{NP-Vollstaendigkeit}
+Ein Problem A ist NP-vollstaendig (NP-C), wenn jedes Problem in NP in Polynomialzeit many-one-reduzierbar auf A ist und $A \in NP$.
+Das heißt, es existiert eine polynomielle Turingmaschine M mit $A = L(M)$.\\
+Ein Problem A ist NP-vollstaendig, wenn $\forall B \in NP: B \le_p A$ und $A \in NP$.
+Laege ein NP-vollstaendiges Problem in P, wuerde $P = NP$ gelten.\\
+($B \le_p A$ und B NP-vollstaendig) $\Rightarrow$ A NP-vollstaendig.\\
+Fuer L ist NP-vollstaendig zeigen wir nur noch: $L \in NP$ und $L \ge L'$ mit L' wurde schon als NP-vollstaendig bewiesen.\\
+$SAT \in NP-C$\\
+
+\subsection{Fixed Parameter Tractable}
+Eine Sprache $L \in NP$ nennen wir fixed parameter tractable, wenn es einen Parameter k gibt, sodass fuer konstantes k $x \in L$ in Polynomialzeit entscheidbar ist.
+
+\subsection{Random Self Reducibility}
+Gegeben sei ein dlog-Problem $(g, y)$, so koennen wir ein zufaelliges r wahlen und das Problem $(g, y*g^r) = (g, g^{x+r})$ loesen. Aus der Loesung x+r berechnen wir dann leicht x.
+
+
+
+
+\subsection{Probleme}
+\subsubsection{HALT} $HALT = \{<M> w \in \Sigma^*|$ M haelt bei Eingabe w\}, nicht entscheidbar, $HALT \in RE$
+\subsubsection{Atm} $A_{TM} = \{<M> w \in \Sigma^*|$ M akzeptiert w\}, nicht entscheidbar, $A_{TM} \in RE$
+\subsubsection{MINtm} $MIN_{TM} = \{<M>|$ M ist minimale Turingmaschine\}, nicht entscheidbar
+\subsubsection{PATH} $PATH = \{(G, s, t)|$ G ist eine gerichteter Graph und es gibt einen Pfad von Knoten s nach Knoten t\}, $PATH \in P$
+\subsubsection{RELPRIME} $RELPRIME = \{(x, y)|$ x und y sind teilerfremd\}, $RELPRIME \in P$
+\subsubsection{Composite} $Composite = \{(x|x = p * q$ fuer $p,q \neq 1$\}, $Composite \in P$
+\subsubsection{PRIMES} $PRIMES \in P$
+\subsubsection{NP} Klasse der Sprachen, die sich polynomial verifizieren lassen. Eine Sprache liegt genau dann in NP, wenn sich von eine nichtdeterministischen Turingmaschine in Polynomialzeit erkannt wird.
+\subsubsection{NTIME (t(n))} $NTIME (t(n)) = \{L|$ L wird akzeptiert von einer nichtdeterministischen Turingmaschine in der Zeit $O(t(n))$\}
+
+
+
+\section{Saetze}
+
+\begin{itemize}
+	\item Klasse der von endlichen Automaten akzeptierten Sprachen = Klasse der von Chomsky Typ 3 erzeugten Sprachen.
+	\item Genau die regulaeren Sprachen lassen sich durch regulaere Ausdruecke beschreiben.
+	\item Zu jedem nichtdeterministischen Automaten gibt es einen aequivalenten deterministischen.
+	\item Jede kontextfreie Grammatik laesst sich in Chomsky-Normalform bringen.
+	\item der Cocke-Younger-Kasami-Algorithmus (CYK) entscheidet in $O(|P|*n^3)$, ob $w \in L(G)$, wobei G in Chomsky-Normalform vorliegen muss.
+	\item Kellerautomaten (PDAs) $\Leftrightarrow$ kontextfreie Grammatiken (gleichmaechtig?).
+	\item Die Menge der Sprachen, die von Turingmaschinen erkannt werden, sind vom Chomsky Typ 0.
+	\item Zu jeder kontextsensitiven Grammatik gibt es eine sprachaequivalente Grammatik deren Produktionen der Form
+		\begin{itemize}
+			\item $S \rightarrow a$
+			\item $A \rightarrow a, a \in T$ (oder $S \rightarrow \lambda$)
+			\item $\alpha B \beta \rightarrow \alpha\gamma\beta$ mit $\alpha,\beta,\gamma \in V^*,\gamma \neq \lambda, A \in V$
+		\end{itemize}
+	\item $R = RE \cap co-RE$ (Eine Sprache ist entscheidbar, wenn ihr Komplement entscheidbar ist).
+	\item Das Postsche Korrespondenzproblem ist nicht entscheidbar.
+	\item Es gibt eine berechenbare Funktion $q: \Sigma^* \rightarrow \Sigma^*$, wobei $\forall w \in \Sigma^*: q(w)$ ist Goedelnummer einer Maschine $P_w$, die w ausgibt und haelt, also $q(w) = <P_W>$.
+	\item Es sei $t: \Sigma^* \rightarrow \Sigma^*$ eine berechenbare Funktion. Dann gibt es eine Turingmaschine T, fuer welche $t(<F>)$ die Goedelnummer eine Turingmaschine G ist, welche dieselbe Funktion wie F berechnet (aequivalent).
+	\item Es sei $t(n) \ge n$, dann laesst sich jede $O(t(n)) time$ k-Band Turingmaschine in eine 1-Band Turingmaschine uebersetzen, die in $O(t^2(n)) time$ laeuft.
+	\item Sei N eine nichtdeterministischen Turingmaschine, die ein Entscheider ist. Es bezeichne $f(n)$ die maximale Laenge des kuerzesten Pfades fuer alle Eingaben der Laenge n. Dann ist $f(n)$ die Laufzeit der nichtdeterministischen Turingmaschine N.
+	\item $(L \le_p B$ und $B \in P) \Rightarrow L \in P$
+\end{itemize}
+
+
+
+
+
+\chapter{Informationstheorie}
+
+\section{Begriffe}
+
+\subsection{Information}
+\begin{itemize}
+	\item Information sollte nicht negativ sein: $I(p) \ge 0$.
+	\item Ein Ereignis, welches sicher eintritt (p = 1), sollte keine Information liefern.
+	\item Fuer zwei unabhaengige Ereignisse summiert sich die Information: $I(p_1*p_2) = I(p_1) + I(p_2)$.
+	\item I sollte stetig sein.
+	\item $\Rightarrow I(p) = log_b(1/p)$.
+\end{itemize}
+
+\subsection{Entropie}
+Die Entropie ist ein Maß, unter das nicht komprimiert werden kann. Entropie ist fuer Quellen defininert, die Kolmogorow-Komplexitaet ist auf einzelnen Strings definiert.\\
+Die Entropie einer diskreten Zufallsvariable X ist defininert durch: $H(X) = \sum_{x \in X}p(x)*log(1/p(x)) = EI(X)$.
+Bemerkung: $H(X) \ge 0$.\\
+Beispiel: Sei $X=1$ mit Wahrscheinlichkeit p und $X=0$ mit Wahrscheinlichkeit $1-p$. Dann ist $H(X) = -p*log(p) - (1-p)*log(1-p)$.\\
+Definition: Die gemeinsame Entropie der Zufallsvariablen X, Y mit der gemeinsamen Verteilung $p(X,Y)$ ist definiert durch: $H(X,Y) = \sum_{x \in X}\sum_{y \in Y}p(x,y)*log(1/(p(x,y))$.
+Definition: Die bedingte Entropie der Zufallsvariable Y in Abhaengigkeit von X mit gemeinsamer Verteilung $p(x,y)$ ist\\
+$H(Y|X) = \sum_{x \in X}p(x)*H(Y|X = x)\\
+= -\sum_X p(x)*\sum_Y p(y|x)*log(p(y|x))\\
+= -\sum_X \sum_Y p(x,y)*log(p(y|x))$.\\
+Es gilt $H(X,Y) = H(X) + H(Y|X) = H(Y) + H(X|Y)$.\\
+Es gilt $H((X,Y)|Z) = H(X|Z) + H(Y|X,Y)$.
+
+\subsection{Transinformation}
+$I(X,Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)$.
+
+\subsection{Praefix Codes}
+Ein Praefixcode (praefixfreier Code) ist eine Codierung, sodass fuer jedes Codewort $c = c_1...c_n$ kein $c_1...c_k, k < n$ ein Codewort ist (kein Praefix von c ist selbst ein Codewort).
+
+\subsection{Shannon-Fero-Verfahren}
+\begin{itemize}
+	\item Sortiere die Symbole nach ihrer Haeufigkeit.
+	\item Bestimme den Punkt, an dem die Reihe aufgeteilt werden kann, sodass die summierten Wahrscheinlichkeiten der beiden Teilfolgen moeglichst gleich sind.
+	\item Haenge die beiden Teilfolgen als Blaetter an einer Wurzel.
+	\item Rekursiv weiter: Ersetze jede Teilfolge durch den Baum, der beim Anwenden dieses Verfahrens entsteht, bis alle Teilfolgen einzelne Symbole sind.
+	\item Der resultierende Baum ist ein Praefixcode.
+\end{itemize}
+
+\subsection{Huffman Code}
+\begin{itemize}
+	\item Erstelle aus jedem Symbol einen Baum, der genau dieses Symbol als einzigen Knoten hat.
+	\item Wiederhole die folgenden Schritte solange, bis der Wald nur noch aus einem Baum besteht:
+		\begin{itemize}
+			\item Suche zwei Baeume, sodass die summierten Auftrittswahrscheinlichkeit aller enthaltenen Blaetter minimal wird.
+			\item Erstelle einen neuen Baum, der eine neue Wurzel hat, an die die beiden ausgewaehlten Teilbaeume angehaengt werden.
+		\end{itemize}
+\end{itemize}
+Der Baum (Praefixcode), der vom Huffman-Algorithmus erstellt wird, ist minimal.
+Es bezeichne $l(\sigma)$ die Laenge des Pfades im Baum von Wurzel zu Blatt $\sigma$ und $p(\sigma)$ die Auftrittswahrscheinlichkeit von $\sigma$, dann miniert der Huffman-Code $E = \sum_{\sigma \in \Sigma}p(\sigma)*l(\sigma)$.
+
+\subsection{Hamming Distanz}
+Fuer $x,y \in Q^n$ ist $d(x,y) = \sum_{i=1}^n(1-\delta^{x_i, y_i} = \#\{i|i = 1,...,n,x_i \neq y_i\}$ die Hamming-Distanz zwischen x und y.
+
+\subsection{Minimaldistanz}
+Die Minimaldistanz eines nichttrivialen Block-Codes C ist $m(C) = min_{c_1,c_2 \in C, c_1 \neq c_2}d(c_1, c_2)$.
+Fuer einen Code $C \subseteq Q^n$ heißt $R(C) = log(\#C)\log((\#Q)^n) = log(\#C)/(n*log(\#Q))$ die Informationsrate von C.
+
+\subsection{Perfekte Codes}
+Ein Code C mit ungerader Minimaldistanz $m(C)$ heißt perfekt, falls fuer jedes $x \in Q^n$ genau ein $c \in C$ gibt, sodass $wgt(x-c) \le (m(C)-1)/2$.
+
+\subsection{Korrekturleistung}
+Ein Block-Code C mit Minimaldistranz $m(C) = d$ kann entweder bis zu $d-1$ Fehler erkennen oder bis zu $\lfloor (d-1)/2 \rfloor$ Fehler zu korrigieren.
+
+\subsection{Linearer Block-Code}
+Ein linearer $[n,k]$-Block-Code C ist ein Untervektorraum von $\mathbb{F}_q^n$ der Dimension k.
+Fuer lineare $[n,k]$-Codes C gilt $R(C) = k/n$.\\\\
+Ist C ein linearer $[n,k]$-Code, so koennen wir C als Kern einer $\mathbb{F}^{(n-k)\times n}$-Matrix angeben: $C = Ker(H) = \{x \in \mathbb{F}^n|H*x = 0\}$.
+H heißt Pruefmatrix oder Parity-Check-Matrix.\\
+Beschreibung ueber Codierungsabbildung: Fuer $[n,k]$-Code C koennen wir $\mathbb{F}^{n \times k}$-Matrix G angeben, sodass $C = Bild(G) = \{y \in \mathbb{F}^n|\exists x \in \mathbb{F}^k:y = G*x\}$.
+G bildet die Informationsworte auf Codeworte ab.\\\\
+Fuer gegebene G,H gilt $H*G = 0$.
+Fuer $x \in \mathbb{F}^n$ heißt $s = H*x$ das Fehlersyndrom von x.
+s haengt nur von einem additiven Fehler, nicht aber vom Codewort selber ab. Ist $x = c+e$, so ist $H * x = H*(c+e) = H*c + H*e = H*e = s$.
+Fuer gegebenes s heißt (falls eindeutig) das $e \in \mathbb{F}^n$ mit $wgt(e) = min\{wgt(x)|x \in \mathbb{F}^n, x \neq 0\}$ der Coset-Leader von s.
+
+\subsection{Hamming-Metrik}
+Fuer $x \in \mathbb{F}_q^n$ definieren wir die Hamming-Metrik (Hamming Gewicht, $L_0$-Norm) $wget(x) = d(x,0) = \sum_{i=1}^n(1-\delta_{x_i,0} = \#\{i|i=1,...,n,x_i \neq 0\}$.
+Fuer Block-Codes gilt $d(x,y) = wget(x-y)$.
+
+
+\section{Saetze}
+\begin{itemize}
+	\item Jeder innere Knoten in einem minimalen Baum hat zwei Kindknoten.
+	\item Wenn $\sigma_1$ und $\sigma_2$ die unwahrscheinlichsten Symbole sind, so gibt es einen optimalen Baum, in welchem $\sigma_1$ und $\sigma_2$ direkte Geschwister sind.
+	\item Fuer eine Quelle mit der Rate R und einen verrauschten Kanal der Kapazitaet C, wobei $R \le C$, gibt es fuer jedes $\epsilon > 0$ eine Kanalcodierung, sodass die entstehende Uebertragungsrate $< \epsilon$.
+	\item Block-Codes haben Woerter mit fester Laenege, Faltungscodes nicht.
+\end{itemize}
+
+\end{document}
