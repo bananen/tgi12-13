@@ -69,7 +69,8 @@ Grammatiken ohne Einschraenkungen.
 Grammatiken mit Produktionen $u \rightarrow v$ mit $u \in V^+$, $v \in ((V \cup T) \textbackslash \{S\})^+$ und $|u| \le |v|$ (oder $S \rightarrow \lambda$) (auch kontextsensitiv).
 
 \subsection{Linear beschraenkte Turingmaschine}
-Nutzt nur den Teil des Bandes, welches von Anfang an beschrieben war. M linear beschraenkt $\Rightarrow$ von M akzeptierte Sprache ist vom Typ Chomsky 1.
+Nutzt nur den Teil des Bandes, welches von Anfang an beschrieben war.\\
+M linear beschraenkt $\Rightarrow$ von M akzeptierte Sprache ist vom Typ Chomsky 1.
 
 \subsection{Universelle Turingmaschine}
 Nimmt \{0,1\}-Codierung einer Turingmaschine M und Eingabe entgegen, simuliert M und akzeptiert genau dann, wenn M akzeptiert.
@@ -78,37 +79,38 @@ Nimmt \{0,1\}-Codierung einer Turingmaschine M und Eingabe entgegen, simuliert M
 Eine Funktion f heißt berechenbar $\Leftrightarrow$ Es existiert eine Turingmaschine, die nach endlich vielen Schritten mit dem Ergebnis der Funktion auf dem Band haelt.
 
 \subsection{many-one-Reduzierbarkeit}
-Eine Sprache A heißt many-one-reduzierbar auf die Sprache B ($A \le_m B$), falls eine berechenbare Funktion existiert mit:
-$\forall w \in \Sigma^*: w \in A \Leftrightarrow f(w) \in B$
-B heißt dann schwieriger als A.
-$A \le_m B \Leftrightarrow (B entscheidbar \Rightarrow A entscheidbar)$
+Eine Sprache A heißt many-one-reduzierbar auf die Sprache B ($A \le_m B$), falls eine berechenbare Funktion existiert mit:\\
+$\forall w \in \Sigma^*: w \in A \Leftrightarrow f(w) \in B$\\
+B heißt dann schwieriger als A.\\
+$A \le_m B \Leftrightarrow$ (B entscheidbar $\Rightarrow$ A entscheidbar)
 
 \subsection{Turingreduzierbarkeit}
-$A \le_T B$, wenn es eine Orakelturingmaschine $TM^O$ gibt, die A entscheidet, wobei O ein Orakel fuer B ist.
-Turingreduzierbarkeit $\neg$ many-one-Reduzierbarkeit
+$A \le_T B$, wenn es eine Orakelturingmaschine $TM^O$ gibt, die A entscheidet, wobei O ein Orakel fuer B ist.\\
+Turingreduzierbarkeit $\neq$ many-one-Reduzierbarkeit
 
 \subsection{Orakel}
 Fuer eine Sprache B ist ein Orakel fuer B ein externes Geraet, welches fuer eine Turingmaschine entscheidet, ob ein Wort $w \in B$.
 Eine Turingmaschine mit Zugriff auf ein Orakel heißt Orakelturingmaschine $TM^O$.
 
 \subsection{Kolmogorow-Komplexitaet}
-Fuer einen String ist $K(x)$ das kleinste d, sodass eine Turingmaschine mit Eingabe w x ausgibt und obige Codierung d Bits benoetigt.
-$\exists c \forall x: K(x) \le |x| + c$
-$\exists c \forall x: K(xx) \le K(x) + c$
-Fuer jede Beschreibungssprache p existiert eine Konstante c mit $\forall x: K(x) \le K_p(x) + c$
+Fuer einen String ist $K(x)$ das kleinste d, sodass eine Turingmaschine mit Eingabe w x ausgibt und obige Codierung d Bits benoetigt.\\
+$\exists c \forall x: K(x) \le |x| + c$\\
+$\exists c \forall x: K(xx) \le K(x) + c$\\
+Fuer jede Beschreibungssprache p existiert eine Konstante c mit $\forall x: K(x) \le K_p(x) + c$\\
 Fuer jede Laenge n gibt es unkomprimierbare Strings der Laenge n.
 
 \subsection{Speed-Up-Theorem}
 Zu jeder Turingmaschine existiert eine Turingmascine, welche um einen konstanten Faktor schneller ist.
 
 \subsection{Verifizierer}
-Ein Verifizierer fuer eine Sprache A ist ein Algorithmus V mit $A = \{w|$ V akzeptiert $(w,c)$ fuer irgendein c\}
-Ist die Laufzeit von V polynomial in $|w|$, so sagen wir A ist polynomial verfizierbar. Insbesondere ist $|c|$ dann polynomial in $|w|$. c nennt man auch Zeugen oder Beweis.
+Ein Verifizierer fuer eine Sprache A ist ein Algorithmus V mit $A = \{w|$ V akzeptiert $(w,c)$ fuer irgendein c\}\\
+Ist die Laufzeit von V polynomial in $|w|$, so sagen wir A ist polynomial verfizierbar. Insbesondere ist $|c|$ dann polynomial in $|w|$.\\
+c nennt man auch Zeugen oder Beweis.
 
 \subsection{NP-Vollstaendigkeit}
 Ein Problem A ist NP-vollstaendig (NP-C), wenn jedes Problem in NP in Polynomialzeit many-one-reduzierbar auf A ist und $A \in NP$.
-Das heißt, es existiert eine polynomielle Turingmaschine M mit $A = L(M)$.\\
-Ein Problem A ist NP-vollstaendig, wenn $\forall B \in NP: B \le_p A$ und $A \in NP$.
+Das heißt, es existiert eine polynomielle Turingmaschine M mit $A = L(M)$.\\\\
+Ein Problem A ist NP-vollstaendig, wenn $\forall B \in NP: B \le_p A$ und $A \in NP$.\\\\
 Laege ein NP-vollstaendiges Problem in P, wuerde $P = NP$ gelten.\\
 ($B \le_p A$ und B NP-vollstaendig) $\Rightarrow$ A NP-vollstaendig.\\
 Fuer L ist NP-vollstaendig zeigen wir nur noch: $L \in NP$ und $L \ge L'$ mit L' wurde schon als NP-vollstaendig bewiesen.\\
@@ -131,7 +133,7 @@ Gegeben sei ein dlog-Problem $(g, y)$, so koennen wir ein zufaelliges r wahlen u
 \subsubsection{RELPRIME} $RELPRIME = \{(x, y)|$ x und y sind teilerfremd\}, $RELPRIME \in P$
 \subsubsection{Composite} $Composite = \{(x|x = p * q$ fuer $p,q \neq 1$\}, $Composite \in P$
 \subsubsection{PRIMES} $PRIMES \in P$
-\subsubsection{NP} Klasse der Sprachen, die sich polynomial verifizieren lassen. Eine Sprache liegt genau dann in NP, wenn sich von eine nichtdeterministischen Turingmaschine in Polynomialzeit erkannt wird.
+\subsubsection{NP} Klasse der Sprachen, die sich polynomial verifizieren lassen. Eine Sprache liegt genau dann in NP, wenn sie von einer nichtdeterministischen Turingmaschine in Polynomialzeit erkannt wird.
 \subsubsection{NTIME (t(n))} $NTIME (t(n)) = \{L|$ L wird akzeptiert von einer nichtdeterministischen Turingmaschine in der Zeit $O(t(n))$\}
 
 
@@ -180,14 +182,14 @@ Gegeben sei ein dlog-Problem $(g, y)$, so koennen wir ein zufaelliges r wahlen u
 
 \subsection{Entropie}
 Die Entropie ist ein Maß, unter das nicht komprimiert werden kann. Entropie ist fuer Quellen defininert, die Kolmogorow-Komplexitaet ist auf einzelnen Strings definiert.\\
-Die Entropie einer diskreten Zufallsvariable X ist defininert durch: $H(X) = \sum_{x \in X}p(x)*log(1/p(x)) = EI(X)$.
-Bemerkung: $H(X) \ge 0$.\\
-Beispiel: Sei $X=1$ mit Wahrscheinlichkeit p und $X=0$ mit Wahrscheinlichkeit $1-p$. Dann ist $H(X) = -p*log(p) - (1-p)*log(1-p)$.\\
-Definition: Die gemeinsame Entropie der Zufallsvariablen X, Y mit der gemeinsamen Verteilung $p(X,Y)$ ist definiert durch: $H(X,Y) = \sum_{x \in X}\sum_{y \in Y}p(x,y)*log(1/(p(x,y))$.
+Die Entropie einer diskreten Zufallsvariable X ist defininert durch: $H(X) = \sum_{x \in X}p(x)*log(1/p(x)) = EI(X)$.\\\\
+Bemerkung: $H(X) \ge 0$.\\\\
+Beispiel: Sei $X=1$ mit Wahrscheinlichkeit p und $X=0$ mit Wahrscheinlichkeit $1-p$. Dann ist $H(X) = -p*log(p) - (1-p)*log(1-p)$.\\\\
+Definition: Die gemeinsame Entropie der Zufallsvariablen X, Y mit der gemeinsamen Verteilung $p(X,Y)$ ist definiert durch: $H(X,Y) = \sum_{x \in X}\sum_{y \in Y}p(x,y)*log(1/(p(x,y))$.\\
 Definition: Die bedingte Entropie der Zufallsvariable Y in Abhaengigkeit von X mit gemeinsamer Verteilung $p(x,y)$ ist\\
 $H(Y|X) = \sum_{x \in X}p(x)*H(Y|X = x)\\
 = -\sum_X p(x)*\sum_Y p(y|x)*log(p(y|x))\\
-= -\sum_X \sum_Y p(x,y)*log(p(y|x))$.\\
+= -\sum_X \sum_Y p(x,y)*log(p(y|x))$.\\\\
 Es gilt $H(X,Y) = H(X) + H(Y|X) = H(Y) + H(X|Y)$.\\
 Es gilt $H((X,Y)|Z) = H(X|Z) + H(Y|X,Y)$.
 
@@ -222,8 +224,9 @@ Es bezeichne $l(\sigma)$ die Laenge des Pfades im Baum von Wurzel zu Blatt $\sig
 Fuer $x,y \in Q^n$ ist $d(x,y) = \sum_{i=1}^n(1-\delta^{x_i, y_i} = \#\{i|i = 1,...,n,x_i \neq y_i\}$ die Hamming-Distanz zwischen x und y.
 
 \subsection{Minimaldistanz}
-Die Minimaldistanz eines nichttrivialen Block-Codes C ist $m(C) = min_{c_1,c_2 \in C, c_1 \neq c_2}d(c_1, c_2)$.
-Fuer einen Code $C \subseteq Q^n$ heißt $R(C) = log(\#C)\log((\#Q)^n) = log(\#C)/(n*log(\#Q))$ die Informationsrate von C.
+Die Minimaldistanz eines nichttrivialen Block-Codes C ist $m(C) = min_{c_1,c_2 \in C, c_1 \neq c_2}d(c_1, c_2)$.\\\\
+Fuer einen Code $C \subseteq Q^n$ heißt $R(C) = log(\#C)\log((\#Q)^n) = log(\#C)/(n*log(\#Q))$ die Informationsrate von C.\\
+Je zwei Spalten der Parity-Check Matrix sind linear abhaengig (trivial) $\Rightarrow m(C) = 2 \Rightarrow$ Parity Codes koennen einen Bitfehler erkennen, aber keine Fehler korrigieren.
 
 \subsection{Perfekte Codes}
 Ein Code C mit ungerader Minimaldistanz $m(C)$ heißt perfekt, falls fuer jedes $x \in Q^n$ genau ein $c \in C$ gibt, sodass $wgt(x-c) \le (m(C)-1)/2$.
@@ -246,6 +249,38 @@ Fuer gegebenes s heißt (falls eindeutig) das $e \in \mathbb{F}^n$ mit $wgt(e) =
 \subsection{Hamming-Metrik}
 Fuer $x \in \mathbb{F}_q^n$ definieren wir die Hamming-Metrik (Hamming Gewicht, $L_0$-Norm) $wget(x) = d(x,0) = \sum_{i=1}^n(1-\delta_{x_i,0} = \#\{i|i=1,...,n,x_i \neq 0\}$.
 Fuer Block-Codes gilt $d(x,y) = wget(x-y)$.
+
+\subsection{Parity Codes}
+Idee: Fuege einem Informationswort ein Bit hinzu, welches beschreibt, ob die Quersumme des Informationswortes gerade oder ungerade ist. Parity-Codes sind $[n, n-1]$-Codes.
+
+\subsection{Rate}
+$R(C) = (n-1)/n = 1-(1/n)$, d.h. $R(C) \rightarrow 1$ fuer $n \rightarrow \inf$.
+
+\subsection{Hamming-Codes}
+Hamming Codes sind $[2^k - 1, 2^k - k - 1]$-Codes, fuer die je zwei Spalten der Pruefmatrix linear unabhaengig sind.
+$R(C) = 1-k/(2^k-1)$.
+$m(C) = 2$.
+
+\subsection{Perfekte Sicherheit}
+Sei M der Klartext, B das Chiffrat, p(M) die Wahrscheinlichkeit, den Klartext zu raten. Dann heißt perfekte Sicherheit: $p(M|G) = p(M)$.
+
+\subsection{Aequivokation}
+$H(K|E) = -\sum_{E,K} p(E,K) * log(p(K|E))$.\\
+$H(M|E) = -\sum_{E,M} p(E,M) * log(p(M|E))$.\\
+Bei perfekter Sicherheit gilt: $H(M|E) = H(M)$.
+
+
+
+\subsection{Probleme}
+\subsubsection{COSET-WEIGHTS}
+Gegeben: Pruefmatrix $H \in \mathbb{F}_2^{m \times n}$, ein Syndrom $s \in \mathbb{F}_2^m$ und Zahl k.\\
+Frage: Gibt es ein E mit $wgt(e) \le k$, sodass $H*e = s$?\\\\
+Das zugehoerige Suchproblem ist COSET-LEADER.\\
+COSET-WEIGHTS ist NP-vollstaendig.
+\subsubsection{SUBSPACE-WEIGHTS}
+Gegeben: Pruefmatrix H und Zahl k.\\
+Frage: Gibt es ein c mit $wgt(c) = k$, sodass $H*c = 0$?\\\\
+SUBSPACE-WEIGHTS ist NP-vollstaendig.
 
 
 \section{Saetze}
