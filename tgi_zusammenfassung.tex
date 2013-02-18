@@ -133,15 +133,19 @@ Gegeben sei ein dlog-Problem $(g, y)$, so koennen wir ein zufaelliges r wahlen u
 
 
 \subsection{Probleme}
-\subsubsection{HALT} $HALT = \{<M> w \in \Sigma^*|$ M haelt bei Eingabe w\}, nicht entscheidbar, $HALT \in RE$
-\subsubsection{Atm} $A_{TM} = \{<M> w \in \Sigma^*|$ M akzeptiert w\}, nicht entscheidbar, $A_{TM} \in RE$
-\subsubsection{MINtm} $MIN_{TM} = \{<M>|$ M ist minimale Turingmaschine\}, nicht entscheidbar
-\subsubsection{PATH} $PATH = \{(G, s, t)|$ G ist eine gerichteter Graph und es gibt einen Pfad von Knoten s nach Knoten t\}, $PATH \in P$
-\subsubsection{RELPRIME} $RELPRIME = \{(x, y)|$ x und y sind teilerfremd\}, $RELPRIME \in P$
-\subsubsection{Composite} $Composite = \{(x|x = p * q$ fuer $p,q \neq 1$\}, $Composite \in P$
-\subsubsection{PRIMES} $PRIMES \in P$
-\subsubsection{NP} Klasse der Sprachen, die sich polynomial verifizieren lassen. Eine Sprache liegt genau dann in NP, wenn sie von einer nichtdeterministischen Turingmaschine in Polynomialzeit erkannt wird.
-\subsubsection{NTIME (t(n))} $NTIME (t(n)) = \{L|$ L wird akzeptiert von einer nichtdeterministischen Turingmaschine in der Zeit $O(t(n))$\}
+\subsubsection{SAT} Erfuellbarkeitsproblem der Aussagenlogik fuer Formeln in konjunktiver Normalform. \textbf{NP-vollstaendig}.
+\subsubsection{CLIQUE} Befindet sich in einem gegebenen Graphen eine Clique der Groeße k. \textbf{NP-vollstaendig}.
+\subsubsection{VERTEX COVER} Entscheidung: Hat der Graph einen Vertex Cover der Groeße k? Optimierung: Was ist die Cliquenzahl? Suche: Finde groeßte Clique. Alle sind \textbf{NP-vollstaendig}.
+\subsubsection{HALT} $HALT = \{<M> w \in \Sigma^*|$ M haelt bei Eingabe w\}. \textbf{Nicht entscheidbar, aber semientscheidbar}. Ist die Turingmaschine linear beschraenkt, so ist das Halteproblem entscheidbar.
+\subsubsection{Atm} $A_{TM} = \{<M> w \in \Sigma^*|$ M akzeptiert w\}. \textbf{Nicht entscheidbar, aber semientscheidbar}.
+\subsubsection{MINtm} $MIN_{TM} = \{<M>|$ M ist minimale Turingmaschine\}. \textbf{Nicht entscheidbar}.
+\subsubsection{PATH} $PATH = \{(G, s, t)|$ G ist eine gerichteter Graph und es gibt einen Pfad von Knoten s nach Knoten t\}. \textbf{$PATH \in P$}.
+\subsubsection{RELPRIME} $RELPRIME = \{(x, y)|$ x und y sind teilerfremd\}. \textbf{$RELPRIME \in P$}
+\subsubsection{Composite} $Composite = \{(x|x = p * q$ fuer $p,q \neq 1$\}, \textbf{$Composite \in P$}
+\subsubsection{PRIMES} \textbf{$PRIMES \in P$}
+\subsubsection{Klasse P} Klasse der Sprachen, die sich deterministisch in Polynomialzeit entscheiden lassen.
+\subsubsection{Klasse NP} Klasse der Sprachen, die sich nichtdeterministisch in Polynomialzeit verifizieren lassen. Eine Sprache liegt genau dann in NP, wenn sie von einer nichtdeterministischen Turingmaschine in Polynomialzeit erkannt wird.
+\subsubsection{Klasse NTIME (t(n))} $NTIME (t(n)) = \{L|$ L wird akzeptiert von einer nichtdeterministischen Turingmaschine in der Zeit $O(t(n))$\}
 
 
 
@@ -158,7 +162,8 @@ Gegeben sei ein dlog-Problem $(g, y)$, so koennen wir ein zufaelliges r wahlen u
 			\item $A \rightarrow a, a \in T$ (oder $S \rightarrow \lambda$)
 			\item $\alpha B \beta \rightarrow \alpha\gamma\beta$ mit $\alpha,\beta,\gamma \in V^*,\gamma \neq \lambda, A \in V$
 		\end{itemize}
-	\item $R = RE \cap co-RE$ (Eine Sprache ist entscheidbar, wenn ihr Komplement entscheidbar ist).
+	\item $R = RE \cap co-RE$: Eine Sprache ist entscheidbar, wenn sie und ihr Komplement semi-entscheidbar sind.
+	\item Ist eine Sprache entscheidbar, so ist ihr Komplement auch entscheidbar.
 	\item Das Postsche Korrespondenzproblem ist nicht entscheidbar.
 	\item Es gibt eine berechenbare Funktion $q: \Sigma^* \rightarrow \Sigma^*$, wobei $\forall w \in \Sigma^*: q(w)$ ist Goedelnummer einer Maschine $P_w$, die w ausgibt und haelt, also $q(w) = <P_W>$.
 	\item Es sei $t: \Sigma^* \rightarrow \Sigma^*$ eine berechenbare Funktion. Dann gibt es eine Turingmaschine T, fuer welche $t(<F>)$ die Goedelnummer eine Turingmaschine G ist, welche dieselbe Funktion wie F berechnet (aequivalent).
