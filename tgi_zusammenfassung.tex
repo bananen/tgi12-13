@@ -40,7 +40,7 @@ $xR_Ly \Leftrightarrow \forall z \in \Sigma^*: (xz \in L \Leftrightarrow yz \in 
 \subsubsection{Pumping-Lemma fuer regulaere Sprachen}
 Sei A eine regulaere Sprache, dann existiert eine Zahl p, sodass fuer alle $s \in A$ der Laenge $\ge p$ gilt: $s = xyz$ mit
 \begin{itemize}
-	\item $|y| > 0 (y \neq \lambda)$
+	\item $|y| > 0$ bzw. $y \neq \lambda$
 	\item $|xy| \le p$
 	\item $\forall i \ge 0: xy^iz \in A$
 \end{itemize}
@@ -48,9 +48,9 @@ Sei A eine regulaere Sprache, dann existiert eine Zahl p, sodass fuer alle $s \i
 \subsubsection{Pumping-Lemma fuer kontextfreie Sprache}
 Sei A eine kontextfreie Sprache, dann existiert eine Zahl p, sodass fuer alle $s \in A$ der Laenge $\ge p$ gilt: $s = uvxyz$ mit
 \begin{itemize}
-	\item $\forall i \ge 0: wv^ixy^iz \in A$
 	\item $|vy| > 0$
 	\item $|vxy| \le p$
+	\item $\forall i \ge 0: uv^ixy^iz \in A$
 \end{itemize}
 
 \subsection{Chomsky-Normalform}
@@ -74,7 +74,7 @@ Eine Grammatik ist in Chomsky-Normalform, wenn jede Produktion eine der folgende
 \hline
 2 & Kontextfrei & kontextfrei & entscheidbar & Kellerautomat\\
 \hline
-3 & Regulaer & rechtlinear & entscheidbar & Endlicher Akzeptor\\
+3 & Regulaer & rechtslinear & entscheidbar & Endlicher Akzeptor\\
 \hline
 \end{tabular}
 
@@ -134,8 +134,8 @@ Gegeben sei ein dlog-Problem $(g, y)$, so koennen wir ein zufaelliges r wahlen u
 
 \subsection{Probleme}
 \subsubsection{SAT} Erfuellbarkeitsproblem der Aussagenlogik fuer Formeln in konjunktiver Normalform. \textbf{NP-vollstaendig}.
-\subsubsection{CLIQUE} Befindet sich in einem gegebenen Graphen eine Clique der Groeße k. \textbf{NP-vollstaendig}.
-\subsubsection{VERTEX COVER} Entscheidung: Hat der Graph einen Vertex Cover der Groeße k? Optimierung: Was ist die Cliquenzahl? Suche: Finde groeßte Clique. Alle sind \textbf{NP-vollstaendig}.
+\subsubsection{CLIQUE} Befindet sich in einem gegebenen Graphen eine Clique der Groeße k? \textbf{NP-vollstaendig}.
+\subsubsection{VERTEX COVER} Hat der Graph einen Vertex Cover der Groeße k? \textbf{NP-vollstaendig}.
 \subsubsection{HALT} $HALT = \{<M> w \in \Sigma^*|$ M haelt bei Eingabe w\}. \textbf{Nicht entscheidbar, aber semientscheidbar}. Ist die Turingmaschine linear beschraenkt, so ist das Halteproblem entscheidbar.
 \subsubsection{Atm} $A_{TM} = \{<M> w \in \Sigma^*|$ M akzeptiert w\}. \textbf{Nicht entscheidbar, aber semientscheidbar}.
 \subsubsection{MINtm} $MIN_{TM} = \{<M>|$ M ist minimale Turingmaschine\}. \textbf{Nicht entscheidbar}.
